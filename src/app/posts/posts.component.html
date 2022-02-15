@@ -1,0 +1,29 @@
+<div *ngFor="let post of posts | idfilter: id">
+<div>
+<div class="image-top" style="background-image: url('{{post.image}}')">
+  <button mat-stroked-button class="header-button" (click)="goBack()">< View Posts</button>
+    <h2 class="title">{{post.title}}</h2>
+</div>
+<p class="description">{{post.description}}</p>
+<div class="comments">
+    <span>Comments</span>
+    <br>
+    <div class="card" *ngFor="let com of post.comments">
+        <div class="card-body">
+          <mat-icon md-48>account_circle</mat-icon>
+          <h5 class="card-title">{{com.name}}</h5>
+          <br>
+          <br>
+          <p class="card-text">{{com.comment}}</p>
+        </div>
+    </div>
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Write a comment</mat-label>
+        <textarea matInput name ="comments.comment" [(ngModel)]="comments.comment"></textarea>
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary" (click)="onAddComment()">Save</button>
+    </form>
+</div>
+</div>

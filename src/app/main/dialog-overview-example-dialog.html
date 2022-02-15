@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Create Post</h1>
+<div mat-dialog-content><form ></form>
+  <div class="example-form">
+  <mat-form-field>
+    <input matInput name="pst.title" [(ngModel)]="pst.title" placeholder="Title">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="pst.description" [(ngModel)]="pst.description" placeholder="Description">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select name="pst.category" [(ngModel)]="pst.category" disableRipple>
+      <mat-option value="Travel">Travel</mat-option>
+      <mat-option value="Lifestyle">Lifestyle</mat-option>
+      <mat-option value="Business">Business</mat-option>
+      <mat-option value="Vacation">Vacation</mat-option>
+      <mat-option value="Other">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input value="https://source.unsplash.com/random" matInput placeholder="URL of the image">
+  </mat-form-field>
+</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onAddPost()" [mat-dialog-close]="pst.title">Save</button>
+  <button mat-button cdkFocusInitial (click)="onNoClick()">Cerrar</button>
+</div>

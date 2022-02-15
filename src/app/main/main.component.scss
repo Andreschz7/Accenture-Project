@@ -1,6 +1,7 @@
 .btn-group {
 display: block;
 text-align: center;
+padding-bottom: 1.5rem;
 }
 
 .btn {
@@ -10,5 +11,77 @@ text-align: center;
     border-radius: 0;
     padding: .6rem .75rem;
     border-color: rgb(202, 202, 202);
+    background-color: white;
+
+    &:active {
+        background-color: gray;
+    }
+    &:focus {
+        background-color: black;
+    }
+}
+.btn-checked {
+    background-color: black;
 }
 
+.container {
+    width: 100%;
+}
+
+.card {
+    height: 22rem;
+    background-color: none;
+    background-size: 100% 100%;
+    border-radius: 0;
+    border: none;
+}
+
+.card-img-overlay {
+    padding: 3rem 3rem 3rem 2rem;
+}
+
+.card-title {
+    font-size: 2.25rem;
+    padding-top: 3.5rem;
+    line-height: 30px;
+}
+
+.example-button-container{
+    position: fixed;
+    top: 10rem;
+    right: 2rem;
+    border: none;
+}
+
+.post-count {
+    font-style: italic;
+    font-size: 1rem;
+    padding-top: 1rem;
+}
+
+.icon-comment {
+    font-size: 1rem;
+}
+
+.example-container {
+    align-items: center;
+    flex-direction: column;
+    position: static;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  .table{
+      display: block;
+  }
+
+  @media (max-width: 575.98px) { 
+    .card-title{
+        line-height: 30px;
+        padding-top: 1rem;
+    }
+    .card-img-overlay{
+        padding-top: 3rem;
+    }
+  }

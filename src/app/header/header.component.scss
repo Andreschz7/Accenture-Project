@@ -1,8 +1,10 @@
 .title {
     color: black;
-    font-size: 4rem;
+    font-size: 3.5rem;
     display: block;
     font-weight: bold;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .subtitle {
@@ -10,7 +12,7 @@
     font-size: 1.15rem;
     display: inline-block;
     position: relative;
-    padding: 6px 16px;
+    padding: 10px 16px;
 
     &::before, &::after{
     position: absolute;   
@@ -38,3 +40,10 @@
     padding-bottom: 45px;
     text-align: center;
 }
+
+ @media (max-width: 575.98px) { 
+    .title{
+        line-height: 70px;
+        padding: 0rem 2rem 0rem 2rem;
+    }
+  }
