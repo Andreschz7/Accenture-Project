@@ -1,17 +1,13 @@
 import { Component, Inject, OnInit} from '@angular/core';
-import { PostsService } from '../post.service';
+import { Post, PostsService } from '../post.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-export interface DialogData {
- 
-}
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  providers: [PostsService],
 })
 
 export class MainComponent implements OnInit {
@@ -19,7 +15,7 @@ export class MainComponent implements OnInit {
   posts: any[] = [];
   filter : {category:string} = {category : ""};
 
-  constructor(private postService: PostsService, private router: Router, public dialog: MatDialog) {
+  constructor(private postService: PostsService, private router: Router, public dialog: MatDialog, private http: HttpClient) {
   }
 
   openDialog(): void {
@@ -34,7 +30,15 @@ export class MainComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.posts = this.postService.posts;
+    // this.posts = this.postService.posts;
+    
+    this.postService.getPostSubject$.subscribe( () => {
+      console.log("Se llamó")
+      this.postService.getPosts().subscribe((post)=> 
+      {
+        this.posts = post
+      }
+      )});
   }
 
   setCategory(category:string) {
@@ -45,6 +49,8 @@ export class MainComponent implements OnInit {
     this.router.navigate(['../' + route]);
   }
 
+  
+
 }
 @Component({
   selector: 'dialog-overview-example-dialog',
@@ -53,7 +59,7 @@ export class MainComponent implements OnInit {
   providers: [PostsService],
 })
 export class DialogOverviewExampleDialog {
-  pst: { id: number; title: string; shortDescription: string; description: string; category: string; image: string; comments:[]} =
+  pst: Post =
   {id: 0, title: "", shortDescription: "", description: "", category: "", image: "https://source.unsplash.com/random", comments:[]}
     
   constructor(
@@ -65,6 +71,6 @@ export class DialogOverviewExampleDialog {
   }
 
   onAddPost() {
-    this.postService.addPost(this.pst)
+    this.postService.addPost(this.pst);
   }
 }

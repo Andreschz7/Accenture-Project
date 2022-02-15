@@ -1,26 +1,74 @@
-<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-    <label class="btn btn-outline-secondary" (click)="setCategory('All')" for="btnradio1">All</label>
-    <label class="btn btn-outline-secondary" (click)="setCategory('Travel')" for="btnradio2">Travel</label>
-    <label class="btn btn-outline-secondary" (click)="setCategory('Lifestyle')" for="btnradio3">Lifestyle</label>
-    <label class="btn btn-outline-secondary" (click)="setCategory('Business')" for="btnradio4">Business</label>
-    <label class="btn btn-outline-secondary" (click)="setCategory('Vacation')" for="btnradio5">Vacation</label>
-    <label class="btn btn-outline-secondary" (click)="setCategory('Other')" for="btnradio6">Other</label>
+<div
+  class="btn-group"
+  role="group"
+  aria-label="Basic radio toggle button group"
+>
+  <label
+    class="btn btn-outline-secondary"
+    (click)="setCategory('All')"
+    for="btnradio1"
+    >All</label
+  >
+  <label
+    class="btn btn-outline-secondary"
+    (click)="setCategory('Travel')"
+    for="btnradio2"
+    >Travel</label
+  >
+  <label
+    class="btn btn-outline-secondary"
+    (click)="setCategory('Lifestyle')"
+    for="btnradio3"
+    >Lifestyle</label
+  >
+  <label
+    class="btn btn-outline-secondary"
+    (click)="setCategory('Business')"
+    for="btnradio4"
+    >Business</label
+  >
+  <label
+    class="btn btn-outline-secondary"
+    (click)="setCategory('Vacation')"
+    for="btnradio5"
+    >Vacation</label
+  >
+  <label
+    class="btn btn-outline-secondary"
+    (click)="setCategory('Other')"
+    for="btnradio6"
+    >Other</label
+  >
 </div>
 
 <div class="table">
-    <div class="row">
-    <div *ngFor="let post of posts | filter : filter.category:'category'" class="card text-white col-12 col-sm-6" style="background-image: url('{{post.image}}')" [routerLink]="['../posts', post.id]">
+  <div class="row">
+    <div
+      *ngFor="let post of posts | filter: filter.category:'category'"
+      class="card text-white col-12 col-sm-6"
+      style="background-image: url('{{ post.image }}')"
+      [routerLink]="['../posts', post.id]"
+    >
       <div class="card-img-overlay">
-        <h5 class="card-title">{{post.title}}</h5>
-        <p class="post-count">{{post.comments.length}} Comments <mat-icon class="icon-comment">comment</mat-icon></p>
-        <p class="card-text">{{post.shortDescription}}</p>
-        <p class="card-text">{{post.category| uppercase}}</p>
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="post-count">
+          {{ post.comments.length }} Comments
+          <mat-icon class="icon-comment">comment</mat-icon>
+        </p>
+        <p class="card-text">{{ post.shortDescription }}</p>
+        <p class="card-text">{{ post.category | uppercase }}</p>
       </div>
     </div>
-</div>
+  </div>
 
   <div class="example-button-container">
-    <button mat-fab color="warn" aria-label="Example icon button with a home icon" (click)="openDialog()">
+    <button
+      mat-fab
+      color="warn"
+      aria-label="Example icon button with a home icon"
+      (click)="openDialog()"
+    >
       <mat-icon>create</mat-icon>
     </button>
   </div>
+</div>
