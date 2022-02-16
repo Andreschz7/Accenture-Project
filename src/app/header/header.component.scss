@@ -1,49 +1,49 @@
 .title {
-    color: black;
-    font-size: 3.5rem;
-    display: block;
-    font-weight: bold;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  color: black;
+  font-size: 3.5rem;
+  display: block;
+  font-weight: bold;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .subtitle {
-    color: rgb(204, 84, 41);
-    font-size: 1.15rem;
-    display: inline-block;
-    position: relative;
-    padding: 10px 16px;
+  color: rgb(204, 84, 41);
+  font-size: 1.15rem;
+  display: inline-block;
+  position: relative;
+  padding: 10px 16px;
 
-    &::before, &::after{
-    position: absolute;   
-    top:0;
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
     width: 12px;
     height: 39.59px;
     content: " ";
     border: 2px solid #da3b00;
-    }
+  }
 
-    &::before {
-    left: 0;  
+  &::before {
+    left: 0;
     border-right: none;
-    }
-    
-    &::after {
-    right: 0;  
+  }
+
+  &::after {
+    right: 0;
     border-left: none;
-    }
-    
+  }
 }
 
 .header {
-    padding-top: 45px;
-    padding-bottom: 45px;
-    text-align: center;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  text-align: center;
 }
 
- @media (max-width: 575.98px) { 
-    .title{
-        line-height: 70px;
-        padding: 0rem 2rem 0rem 2rem;
-    }
+@media (max-width: 575.98px) {
+  .title {
+    line-height: 70px;
+    padding: 0rem 2rem 0rem 2rem;
   }
+}

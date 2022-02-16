@@ -1,87 +1,100 @@
-.btn-group {
-display: block;
-text-align: center;
-padding-bottom: 1.5rem;
+.row {
+  margin: 0;
 }
 
-.btn {
-    width: 85px;
-    height: 50px;
-    color: black;
-    border-radius: 0;
-    padding: .6rem .75rem;
-    border-color: rgb(202, 202, 202);
-    background-color: white;
-
-    &:active {
-        background-color: gray;
-    }
-    &:focus {
-        background-color: black;
-    }
+.header-buttons {
+  display: block;
+  text-align: center;
+  padding-bottom: 1.5rem;
 }
-.btn-checked {
-    background-color: black;
+
+mat-button-toggle {
+  display: inline-block;
+  width: 5rem;
 }
 
 .container {
-    width: 100%;
+  width: 100%;
 }
 
 .card {
-    height: 22rem;
-    background-color: none;
-    background-size: 100% 100%;
-    border-radius: 0;
-    border: none;
-}
+  height: 22rem;
+  background-color: none;
+  background-size: 100% 100%;
+  border-radius: 0;
+  border: none;
+  position: relative;
 
-.card-img-overlay {
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &-img-overlay {
     padding: 3rem 3rem 3rem 2rem;
-}
+  }
 
-.card-title {
+  &-title {
     font-size: 2.25rem;
     padding-top: 3.5rem;
     line-height: 30px;
+  }
 }
 
-.example-button-container{
-    position: fixed;
-    top: 10rem;
-    right: 2rem;
-    border: none;
+.example-button-container {
+  position: fixed;
+  top: 10rem;
+  right: 2rem;
+  border: none;
 }
 
-.post-count {
-    font-style: italic;
-    font-size: 1rem;
-    padding-top: 1rem;
+.post {
+  &-actions {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    opacity: 0;
+    &:hover {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &-count {
+      font-style: italic;
+      font-size: 1rem;
+      padding-top: 1rem;
+    }
+  }
 }
 
 .icon-comment {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .example-container {
-    align-items: center;
-    flex-direction: column;
-    position: static;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
-  .table{
-      display: block;
-  }
+  align-items: center;
+  flex-direction: column;
+  position: static;
+}
 
-  @media (max-width: 575.98px) { 
-    .card-title{
-        line-height: 30px;
-        padding-top: 1rem;
-    }
-    .card-img-overlay{
-        padding-top: 3rem;
-    }
+.example-container > * {
+  width: 100%;
+}
+.table {
+  display: block;
+}
+
+.icon {
+  font-size: 2rem;
+  z-index: 1000;
+}
+
+@media (max-width: 575.98px) {
+  .card-title {
+    line-height: 30px;
+    padding-top: 1rem;
   }
+  .card-img-overlay {
+    padding-top: 3rem;
+  }
+}

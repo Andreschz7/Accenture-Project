@@ -1,44 +1,27 @@
-<div
-  class="btn-group"
-  role="group"
-  aria-label="Basic radio toggle button group"
->
-  <label
-    class="btn btn-outline-secondary"
-    (click)="setCategory('All')"
-    for="btnradio1"
-    >All</label
-  >
-  <label
-    class="btn btn-outline-secondary"
-    (click)="setCategory('Travel')"
-    for="btnradio2"
-    >Travel</label
-  >
-  <label
-    class="btn btn-outline-secondary"
-    (click)="setCategory('Lifestyle')"
-    for="btnradio3"
-    >Lifestyle</label
-  >
-  <label
-    class="btn btn-outline-secondary"
-    (click)="setCategory('Business')"
-    for="btnradio4"
-    >Business</label
-  >
-  <label
-    class="btn btn-outline-secondary"
-    (click)="setCategory('Vacation')"
-    for="btnradio5"
-    >Vacation</label
-  >
-  <label
-    class="btn btn-outline-secondary"
-    (click)="setCategory('Other')"
-    for="btnradio6"
-    >Other</label
-  >
+
+<div class="buttons">
+  <div class="header-buttons">
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="bold" (click)="setCategory('All')"
+      >All</mat-button-toggle
+    >
+    <mat-button-toggle value="travel" (click)="setCategory('travel')"
+      >Travel</mat-button-toggle
+    >
+    <mat-button-toggle value="lifestyle" (click)="setCategory('lifestyle')"
+      >Lifestyle</mat-button-toggle
+    >
+    <mat-button-toggle value="business" (click)="setCategory('business')"
+      >Business</mat-button-toggle
+    >
+    <mat-button-toggle value="vacation" (click)="setCategory('vacation')"
+      >Vacation</mat-button-toggle
+    >
+    <mat-button-toggle value="other" (click)="setCategory('other')"
+      >Other</mat-button-toggle
+    >
+  </mat-button-toggle-group>
+</div>
 </div>
 
 <div class="table">
@@ -58,6 +41,14 @@
         <p class="card-text">{{ post.shortDescription }}</p>
         <p class="card-text">{{ post.category | uppercase }}</p>
       </div>
+      <div class="post-actions">
+        <button mat-button class="icon" (click)="openDialogEdit(post)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button class="icon" (click)="onDeletePost(post)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -66,7 +57,7 @@
       mat-fab
       color="warn"
       aria-label="Example icon button with a home icon"
-      (click)="openDialog()"
+      (click)="openDialogAdd()"
     >
       <mat-icon>create</mat-icon>
     </button>

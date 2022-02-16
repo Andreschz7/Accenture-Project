@@ -9,7 +9,8 @@ import { FilterPipe } from './filter.pipe';
 import { idFilterPipe } from './id.filter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { DialogOverviewExampleDialog } from './main/main.component';
+import { DialogAddPost } from './main/main.component';
+import { DialogEditPost } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { PostsService } from './post.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     PostsComponent,
     FilterPipe,
     idFilterPipe,
-    DialogOverviewExampleDialog
+    DialogAddPost,
+    DialogEditPost,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [PostsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

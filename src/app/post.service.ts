@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { tap } from 'rxjs/internal/operators/tap';
@@ -31,25 +30,16 @@ export interface Post {
   comments: Comment[];
 }
 
-@Injectable(
-  {
-    providedIn: "root",
-  }
-)
+@Injectable({
+  providedIn: 'root',
+})
 export class PostsService {
   id!: number;
   posts: Post[] = [];
-  
-  getPostSubject$: Observable<any>;
-  getPostSubject: BehaviorSubject<any>;
 
   baseUrl = 'https://private-c3edb-postsmock.apiary-mock.com';
 
-  constructor(private http: HttpClient) {
-    this.getPostSubject = new BehaviorSubject(null);
-
-    this.getPostSubject$ = this.getPostSubject.asObservable();
-  }
+  constructor(private http: HttpClient) {}
 
   addComment(id: number, comments: Comment) {
     for (let i = 0; i < this.posts.length; i++) {
@@ -60,26 +50,32 @@ export class PostsService {
   }
 
   addPost(pst: Post) {
-    pst.id = this.posts.length + 1;
+    let i = this.posts.length;
+    pst.id = this.posts[i - 1].id + 1;
+    pst.shortDescription = pst.description;
 
     this.posts.push(pst);
-    this.setPostChange(pst);
   }
 
-  editPost(posts: {
-    id: number;
-    title: string;
-    shortDescription: string;
-    description: string;
-    category: string;
-    image: string;
-    comments: [];
-  }) {
+  editPost(post: Post) {
     for (let i = 0; i < this.posts.length; i++) {
       const element = this.posts[i];
 
-      if (this.posts[i].id === posts.id) this.posts[i].comments.push();
+      if (this.posts[i].id === post.id) {
+        this.posts[i].id = post.id;
+        this.posts[i].title = post.title;
+        this.posts[i].shortDescription;
+        this.posts[i].description = post.description;
+        this.posts[i].category = post.category;
+        this.posts[i].image = post.image;
+        this.posts[i].comments = post.comments;
+      }
     }
+  }
+
+  deletePost(post: Post) {
+    let index = this.posts.indexOf(post);
+    this.posts.splice(index, 1);
   }
 
   getPosts(): Observable<Post[]> {
@@ -92,11 +88,5 @@ export class PostsService {
 
       // catchError(this.handleError<Post[]>("getPosts", []))
     );
-  }
-
-  setPostChange(pst:any) {
-
-    this.getPostSubject.next(pst);
-
   }
 }

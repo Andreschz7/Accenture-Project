@@ -15,7 +15,6 @@ export class idFilterPipe implements PipeTransform {
       if (item.id == filterNumber) {
         resultArray.push(item);
       }
-
     }
     return resultArray;
   }

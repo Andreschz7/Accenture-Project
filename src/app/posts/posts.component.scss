@@ -1,102 +1,108 @@
 .title {
-    color: white;
-    font-size: 4rem;
-    line-height: 80px;
+  color: white;
+  font-size: 4rem;
+  line-height: 80px;
 }
 
 .image-top {
-    height: 30rem;
-    background-size: cover;
-    justify-content: center;
-    background-position: 80%;
-    display: flex;
-    align-items: center;
-    box-shadow: inset 0 0 0 500px rgba(0, 0, 0, 0.4);
-    position: relative;
-    text-align: center;
+  height: 30rem;
+  background-size: cover;
+  justify-content: center;
+  background-position: 80%;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 0 500px rgba(0, 0, 0, 0.4);
+  position: relative;
+  text-align: center;
 }
 .description {
-    display: flex;
-    font-size: 2rem;
-    line-height: 45px;
-    padding: 2rem 8rem 2rem 8rem;
+  display: flex;
+  font-size: 2rem;
+  line-height: 45px;
+  padding: 2rem 8rem 2rem 8rem;
 }
 
 .comments {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    padding-left: calc((100%/2) - 22rem);
-    padding-right: calc((100%/2) - 22rem);
-    width: 90%;
-    padding-bottom: 2rem;
-
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding-left: calc((100% / 2) - 22rem);
+  padding-right: calc((100% / 2) - 22rem);
+  width: 90%;
+  padding-bottom: 2rem;
 }
 
 .card {
-    margin-top: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 10px 2px rgba(168, 168, 168, 0.39);
-    display: flex;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px 2px rgba(168, 168, 168, 0.39);
+  display: flex;
 
-    &-title {
-       font-size: 1.6rem;
-       font-weight: bold;
-       float:left ;
-       margin-top: 12px;
-       margin-left: 12px;
-    }
+  &-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    float: left;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
 
-    &-text{
-        font-size: 1.3rem;
-        font-weight: lighter;
-        padding: 1rem 2rem 0rem 2rem;
-        display: block;
-    }
+  &-text {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    padding: 1rem 2rem 0rem 2rem;
+    display: block;
+    text-align: left;
+  }
 }
-mat-icon {
-float:left ;
-width: 40px;
-height: 40px;
-font-size: 40px;
+mat{
+  &-icon {
+    float: left;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+  }
+
+  &-form-field {
+    font-size: 1.3rem;
+    width: 100%;
+  }
+
+  &-error {
+    font-size: 0.75rem;
+  }
 }
 
 .example-form {
-    margin-top: 2rem;
-    display: flex;
-    background-color: none;
-}
-
-mat-form-field{
-    font-size: 1.3rem;
-    width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  background-color: none;
 }
 
 button {
-    margin-bottom: rem;
-    display: block;
+  margin-top: 0.5rem;
+  display: block;
 }
 
 .header-button {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    font-size: 1.15rem;
-    color: white;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.15rem;
+  color: white;
 }
 span {
-    text-align: left;
+  text-align: left;
 }
 
-@media (max-width: 575.98px) { 
-    .title{
-line-height: 80px;
-    }
-    .description{
-padding: 2rem 2rem 0 2rem;
-    }
-    .comments{
-padding: 2rem 1rem 2rem 1rem;
-    }
+@media (max-width: 575.98px) {
+  .title {
+    line-height: 80px;
   }
+  .description {
+    padding: 2rem 2rem 0 2rem;
+  }
+  .comments {
+    padding: 2rem 1rem 2rem 1rem;
+  }
+}

@@ -14,9 +14,8 @@ export class FilterPipe implements PipeTransform {
     for (const item of value) {
       if (item[propName] === filterString) {
         resultArray.push(item);
-      }
-      else if(filterString === "All") {
-          resultArray.push(item);
+      } else if (filterString === 'All') {
+        resultArray.push(item);
       }
     }
     return resultArray;
