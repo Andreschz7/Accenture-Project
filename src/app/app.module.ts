@@ -6,7 +6,6 @@ import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { PostsComponent } from './posts/posts.component';
 import { FilterPipe } from './filter.pipe';
-import { idFilterPipe } from './id.filter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { DialogAddPost } from './main/main.component';
@@ -22,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     PostsComponent,
     FilterPipe,
-    idFilterPipe,
     DialogAddPost,
     DialogEditPost,
   ],

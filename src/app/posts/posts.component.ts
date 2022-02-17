@@ -40,13 +40,9 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   onAddComment() {
-    this.sub2 = this.postService.getPosts().subscribe((post) => {
-      this.post = post[this.id - 1];
-    });
     if (this.comment.content !== '') {
       this.postService.addComment(this.id, this.comment);
     }
-    this.sub2.unsubscribe;
   }
 
   ngOnDestroy() {
