@@ -1,6 +1,4 @@
-
 <div class="buttons">
-  <div class="header-buttons">
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
     <mat-button-toggle value="bold" (click)="setCategory('All')"
       >All</mat-button-toggle
@@ -11,6 +9,8 @@
     <mat-button-toggle value="lifestyle" (click)="setCategory('lifestyle')"
       >Lifestyle</mat-button-toggle
     >
+  </mat-button-toggle-group>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
     <mat-button-toggle value="business" (click)="setCategory('business')"
       >Business</mat-button-toggle
     >
@@ -22,7 +22,6 @@
     >
   </mat-button-toggle-group>
 </div>
-</div>
 
 <div class="table">
   <div class="row">
@@ -30,9 +29,8 @@
       *ngFor="let post of posts | filter: filter.category:'category'"
       class="card text-white col-12 col-sm-6"
       style="background-image: url('{{ post.image }}')"
-      [routerLink]="['../posts', post.id]"
     >
-      <div class="card-img-overlay">
+      <div class="card-img-overlay" [routerLink]="['../posts', post.id]">
         <h5 class="card-title">{{ post.title }}</h5>
         <p class="post-count">
           {{ post.comments.length }} Comments
@@ -42,10 +40,18 @@
         <p class="card-text">{{ post.category | uppercase }}</p>
       </div>
       <div class="post-actions">
-        <button mat-button class="icon" (click)="openDialogEdit(post)">
+        <button
+          mat-icon-button
+          aria-label="Edit icon"
+          (click)="openDialogEdit(post)"
+        >
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-button class="icon" (click)="onDeletePost(post)">
+        <button
+          mat-icon-button
+          aria-label="Delete icon"
+          (click)="onDeletePost(post)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </div>

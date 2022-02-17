@@ -28,11 +28,11 @@
         disableRipple
         required
       >
-        <mat-option value="Travel">Travel</mat-option>
-        <mat-option value="Lifestyle">Lifestyle</mat-option>
-        <mat-option value="Business">Business</mat-option>
-        <mat-option value="Vacation">Vacation</mat-option>
-        <mat-option value="Other">Other</mat-option>
+        <mat-option value="travel">Travel</mat-option>
+        <mat-option value="lifestyle">Lifestyle</mat-option>
+        <mat-option value="business">Business</mat-option>
+        <mat-option value="vacation">Vacation</mat-option>
+        <mat-option value="other">Other</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
@@ -49,14 +49,15 @@
     >
   </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="buttons">
   <button
     mat-raised-button
     color="primary"
-    (click)="onAddPost(pst)"
+    (click)="onAddPost()"
     [mat-dialog-close]="pst"
+    *ngIf="pst.title === '' || pst.description === '' || pst.category === '' || pst.image === ''"
   >
     Save
   </button>
-  <button mat-button cdkFocusInitial (click)="onNoClick()">Cerrar</button>
+  <button mat-button cdkFocusInitial (click)="onNoClick()">Cancel</button>
 </div>

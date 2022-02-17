@@ -27,14 +27,14 @@ export class MainComponent implements OnInit {
 
   openDialogAdd(): void {
     const dialogRef = this.dialog.open(DialogAddPost, {
-      width: '600px',
+      width: '525px',
     });
   }
 
   openDialogEdit(post: Post): void {
     post;
     const dialogRef = this.dialog.open(DialogEditPost, {
-      width: '600px',
+      width: '525px',
       data: post,
     });
   }
@@ -78,16 +78,18 @@ export class DialogAddPost {
     private postService: PostsService
   ) {}
 
+  ngOninit() {}
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  onAddPost(pst: Post) {
+  onAddPost() {
     if (
-      pst.title !== '' &&
-      pst.description !== '' &&
-      pst.category !== '' &&
-      pst.image !== ''
+      this.pst.title !== '' &&
+      this.pst.description !== '' &&
+      this.pst.category !== '' &&
+      this.pst.image !== ''
     ) {
       this.postService.addPost(this.pst);
     }

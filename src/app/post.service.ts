@@ -41,11 +41,15 @@ export class PostsService {
 
   constructor(private http: HttpClient) {}
 
-  addComment(id: number, comments: Comment) {
+  addComment(id: number, comment: Comment) {
     for (let i = 0; i < this.posts.length; i++) {
       const element = this.posts[i];
 
-      if (this.posts[i].id === id) this.posts[i].comments.push(comments);
+      if (this.posts[i].id === id) {
+        let x = this.posts[i].comments.length;
+        comment.id = x + 1;
+        this.posts[i].comments.push(comment);
+      }
     }
   }
 

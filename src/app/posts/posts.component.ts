@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscriber, Subscription } from 'rxjs';
 import { PostsService, Comment, Post } from '../post.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class PostsComponent implements OnInit, OnDestroy {
   post!: Post;
   id!: number;
   sub;
-  comments: Comment = { id: 0, author: 'Andres', content: '' };
+  sub2!: Subscription;
+  comment: Comment = { id: 0, content: '', author: 'Andres' };
 
   constructor(
     private router: Router,
@@ -24,7 +26,7 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.postService.getPosts().subscribe((post) => {
+    this.sub2 = this.postService.getPosts().subscribe((post) => {
       this.post = post[this.id - 1];
     });
   }
@@ -33,17 +35,22 @@ export class PostsComponent implements OnInit, OnDestroy {
     return 'You must enter a comment';
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
   goBack() {
     this.router.navigate(['/main']);
   }
 
-  onAddComment(comments: Comment) {
-    if (comments.content !== '') {
-      this.postService.addComment(this.id, this.comments);
+  onAddComment() {
+    this.sub2 = this.postService.getPosts().subscribe((post) => {
+      this.post = post[this.id - 1];
+    });
+    if (this.comment.content !== '') {
+      this.postService.addComment(this.id, this.comment);
     }
+    this.sub2.unsubscribe;
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+    this.sub2.unsubscribe();
   }
 }

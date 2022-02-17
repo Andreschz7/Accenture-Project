@@ -2,7 +2,7 @@
   margin: 0;
 }
 
-.header-buttons {
+.buttons {
   display: block;
   text-align: center;
   padding-bottom: 1.5rem;
@@ -11,6 +11,15 @@
 mat-button-toggle {
   display: inline-block;
   width: 5rem;
+}
+
+.mat-button-toggle-group-appearance-standard {
+  border: none;
+  margin-bottom: 2px;
+}
+
+mat-button-toggle-group {
+  margin-right: 2px;
 }
 
 .container {
@@ -24,10 +33,11 @@ mat-button-toggle {
   border-radius: 0;
   border: none;
   position: relative;
+  background-position: 50%;
 
   &:hover {
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.35s ease-in-out;
   }
 
   &-img-overlay {
@@ -36,7 +46,8 @@ mat-button-toggle {
 
   &-title {
     font-size: 2.25rem;
-    padding-top: 3.5rem;
+    padding-top: 5rem;
+    padding-bottom: 0.75rem;
     line-height: 30px;
   }
 }
@@ -57,6 +68,7 @@ mat-button-toggle {
     &:hover {
       visibility: visible;
       opacity: 1;
+      transition: all 0.5s;
     }
 
     &-count {
@@ -86,7 +98,6 @@ mat-button-toggle {
 
 .icon {
   font-size: 2rem;
-  z-index: 1000;
 }
 
 @media (max-width: 575.98px) {
@@ -96,5 +107,10 @@ mat-button-toggle {
   }
   .card-img-overlay {
     padding-top: 3rem;
+  }
+
+  mat-button-toggle-group {
+    flex-wrap: wrap;
+    text-align: center;
   }
 }

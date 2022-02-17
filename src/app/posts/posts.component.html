@@ -24,20 +24,16 @@
           <mat-label>Write a comment</mat-label>
           <textarea
             matInput
-            name="comments.content"
-            [(ngModel)]="comments.content"
+            name="post.comments.lenght + 1"
+            [(ngModel)]="comment.content"
             required
           ></textarea>
-          <mat-error *ngIf="comments.content === ''">{{
+          <mat-error *ngIf="comment.content === ''">{{
             getErrorMessage()
           }}</mat-error>
         </mat-form-field>
       </form>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="onAddComment(comments)"
-      >
+      <button mat-raised-button color="primary" (click)="onAddComment()">
         Save
       </button>
     </div>
