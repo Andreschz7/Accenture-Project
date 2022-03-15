@@ -1,12 +1,9 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Post, PostsService } from '../post.service';
 import { Router } from '@angular/router';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
-import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { FormsComponent } from '../forms/forms.component';
 
 @Component({
   selector: 'app-main',
@@ -14,35 +11,41 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+  obs!: Observable<Post[]>;
   post!: Post;
   posts: any[] = [];
+  category: string[] = [
+    'all',
+    'travel',
+    'lifestyle',
+    'business',
+    'vacation',
+    'other',
+  ];
   filter: { category: string } = { category: '' };
 
   constructor(
     private postService: PostsService,
     private router: Router,
-    public dialog: MatDialog,
-    private http: HttpClient
+    public dialog: MatDialog
   ) {}
 
   openDialogAdd(): void {
-    const dialogRef = this.dialog.open(DialogAddPost, {
+    const dialogRef = this.dialog.open(FormsComponent, {
       width: '525px',
     });
   }
 
   openDialogEdit(post: Post): void {
     post;
-    const dialogRef = this.dialog.open(DialogEditPost, {
+    const dialogRef = this.dialog.open(FormsComponent, {
       width: '525px',
       data: post,
     });
   }
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe((posts) => {
-      this.posts = posts;
-    });
+    this.obs = this.postService.getPosts();
   }
 
   setCategory(category: string) {
@@ -55,90 +58,5 @@ export class MainComponent implements OnInit {
 
   onDeletePost(post: Post) {
     this.postService.deletePost(post);
-  }
-}
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: './dialog-Add-Post.html',
-  styleUrls: ['./dialog-Add-Post.scss'],
-})
-export class DialogAddPost {
-  pst: Post = {
-    id: 0,
-    title: '',
-    shortDescription: '',
-    description: '',
-    category: '',
-    image: 'https://source.unsplash.com/random',
-    comments: [],
-  };
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogAddPost>,
-    private postService: PostsService
-  ) {}
-
-  ngOninit() {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  onAddPost() {
-    if (
-      this.pst.title !== '' &&
-      this.pst.description !== '' &&
-      this.pst.category !== '' &&
-      this.pst.image !== ''
-    ) {
-      this.postService.addPost(this.pst);
-    }
-  }
-
-  getErrorMessage() {
-    return 'Please enter all the required information';
-  }
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: './dialog-Edit-Post.html',
-  styleUrls: ['./dialog-Edit-Post.scss'],
-})
-export class DialogEditPost {
-  post: Post = {
-    id: 0,
-    title: '',
-    shortDescription: '',
-    description: '',
-    category: '',
-    image: 'https://source.unsplash.com/random',
-    comments: [],
-  };
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogEditPost>,
-    @Inject(MAT_DIALOG_DATA) public data: Post,
-    private postService: PostsService
-  ) {
-    this.post.id = data.id;
-    this.post.title = data.title;
-    this.post.shortDescription = data.shortDescription;
-    this.post.description = data.description;
-    this.post.category = data.category;
-    this.post.image = data.image;
-    this.post.comments = data.comments;
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  onEditPost(post: Post) {
-    this.postService.editPost(this.post);
-  }
-
-  getErrorMessage() {
-    return 'Please enter all the required information';
   }
 }

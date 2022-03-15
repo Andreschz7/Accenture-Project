@@ -1,18 +1,20 @@
 .page-not-found {
-    background-color: rgba(240, 240, 240, 0.411);
-    height: 100vh;
-}
-.page-not-found h2 {
+  background-color: rgba(240, 240, 240, 0.411);
+  height: 100vh;
+
+  & h2 {
     font-size: 130px;
     color: #e91e63;
     padding-bottom: 3rem;
     padding-top: 3rem;
-}
-.page-not-found h3 {
+  }
+
+  & h3 {
     font-size: 42px;
     line-height: 40px;
-}
-.page-not-found .bg-light {
+  }
+
+  & .bg-light {
     width: 50%;
     padding: 50px;
     text-align: center;
@@ -21,13 +23,16 @@
     top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
 }
 
-@media (max-width:  767px) {
-    .page-not-found h2 {
-        font-size: 100px;
+@media (max-width: 767px) {
+  .page-not-found {
+    & h2 {
+      font-size: 100px;
     }
-    .page-not-found h3 {
-        font-size: 28px;
+    & h3 {
+      font-size: 28px;
     }
+  }
 }

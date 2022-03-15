@@ -6,27 +6,18 @@ import { tap } from 'rxjs/internal/operators/tap';
 
 export interface Comment {
   id: number;
-
   author: string;
-
   content: string;
 }
 
 export interface Post {
   id: number;
-
   title: string;
-
   shortDescription: string;
-
   description: string;
-
   publishedAt?: string;
-
   category: string;
-
   image: string;
-
   comments: Comment[];
 }
 
@@ -89,8 +80,6 @@ export class PostsService {
 
     return this.http.get<Post[]>(`${this.baseUrl}/posts`).pipe(
       tap((posts) => (this.posts = posts))
-
-      // catchError(this.handleError<Post[]>("getPosts", []))
     );
   }
 }

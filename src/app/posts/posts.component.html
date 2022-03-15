@@ -19,16 +19,11 @@
           <p class="card-text">{{ com.content }}</p>
         </div>
       </div>
-      <form class="example-form">
+      <form class="example-form" [formGroup]="myForm">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Write a comment</mat-label>
-          <textarea
-            matInput
-            name="post.comments.lenght + 1"
-            [(ngModel)]="comment.content"
-            required
-          ></textarea>
-          <mat-error *ngIf="comment.content === ''">{{
+          <textarea matInput formControlName="content"></textarea>
+          <mat-error *ngIf="campoEsValido('content')">{{
             getErrorMessage()
           }}</mat-error>
         </mat-form-field>

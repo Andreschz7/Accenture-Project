@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscriber, Subscription } from 'rxjs';
-import { PostsService, Comment, Post } from '../post.service';
+import { Subscription } from 'rxjs';
+import { PostsService, Post } from '../post.service';
 
 @Component({
   selector: 'app-posts',
@@ -13,12 +14,12 @@ export class PostsComponent implements OnInit, OnDestroy {
   id!: number;
   sub;
   sub2!: Subscription;
-  comment: Comment = { id: 0, content: '', author: 'Andres' };
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private postService: PostsService
+    private postService: PostsService,
+    private fb: FormBuilder
   ) {
     this.sub = this.route.params.subscribe((params) => {
       this.id = +params['id']; // (+) converts string 'id' to a number
@@ -31,6 +32,12 @@ export class PostsComponent implements OnInit, OnDestroy {
     });
   }
 
+  myForm: FormGroup = this.fb.group({
+    id: [0],
+    content: ['', Validators.required],
+    author: ['Andres'],
+  });
+
   getErrorMessage() {
     return 'You must enter a comment';
   }
@@ -40,9 +47,16 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   onAddComment() {
-    if (this.comment.content !== '') {
-      this.postService.addComment(this.id, this.comment);
+    if (this.myForm.controls['content'].value !== '') {
+      this.postService.addComment(this.id, this.myForm.value);
     }
+    this.myForm.controls['content'].reset();
+  }
+
+  campoEsValido(campo: string) {
+    return (
+      this.myForm.controls[campo].errors && this.myForm.controls[campo].touched
+    );
   }
 
   ngOnDestroy() {

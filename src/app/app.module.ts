@@ -8,11 +8,10 @@ import { PostsComponent } from './posts/posts.component';
 import { FilterPipe } from './filter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { DialogAddPost } from './main/main.component';
-import { DialogEditPost } from './main/main.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostsService } from './post.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     PostsComponent,
     FilterPipe,
-    DialogAddPost,
-    DialogEditPost,
+    FormsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [PostsService],
   bootstrap: [AppComponent],

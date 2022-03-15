@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>Create Post</h1>
+<div mat-dialog-content>
+  <form [formGroup]="miFormulario">
+    <div class="example-form">
+      <mat-form-field>
+        <input matInput formControlName="title" placeholder="Title" />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="description"
+          placeholder="Description"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category" disableRipple>
+          <mat-option value="travel">Travel</mat-option>
+          <mat-option value="lifestyle">Lifestyle</mat-option>
+          <mat-option value="business">Business</mat-option>
+          <mat-option value="vacation">Vacation</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          formControlName="image"
+          matInput
+          placeholder="URL of the image"
+        />
+      </mat-form-field>
+      <mat-error
+        *ngIf="
+          campoEsValido('title') ||
+          campoEsValido('description') ||
+          campoEsValido('category')
+        "
+        >{{ getErrorMessage() }}</mat-error
+      >
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="buttons">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="save()"
+    [disabled]="miFormulario.invalid"
+    [mat-dialog-close]="data"
+  >
+    Save
+  </button>
+  <button mat-button cdkFocusInitial (click)="onNoClick()">Cancel</button>
+</div>

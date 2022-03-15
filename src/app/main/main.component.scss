@@ -11,15 +11,15 @@
 mat-button-toggle {
   display: inline-block;
   width: 5rem;
-}
 
-.mat-button-toggle-group-appearance-standard {
-  border: none;
-  margin-bottom: 2px;
-}
+  &-group {
+    margin-right: 2px;
+  }
 
-mat-button-toggle-group {
-  margin-right: 2px;
+  &-group-appearance-standard {
+    border: none;
+    margin-bottom: 2px;
+  }
 }
 
 .container {
@@ -92,6 +92,7 @@ mat-button-toggle-group {
 .example-container > * {
   width: 100%;
 }
+
 .table {
   display: block;
 }
