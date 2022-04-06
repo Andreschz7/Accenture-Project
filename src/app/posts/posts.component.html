@@ -1,22 +1,22 @@
 <div>
   <div>
-    <div class="image-top" style="background-image: url('{{ post.image }}')">
+    <div class="image-top" style="background-image: url('{{ post?.image }}')">
       <button mat-stroked-button class="header-button" (click)="goBack()">
         < View Posts
       </button>
-      <h2 class="title">{{ post.title }}</h2>
+      <h2 class="title">{{ post?.title }}</h2>
     </div>
-    <p class="description">{{ post.description }}</p>
+    <p class="description">{{ post?.description }}</p>
     <div class="comments container">
       <span>Comments</span>
       <br />
-      <div class="card" *ngFor="let com of post.comments">
+      <div class="card" *ngFor="let com of post?.comments">
         <div class="card-body">
           <mat-icon md-48>account_circle</mat-icon>
-          <h5 class="card-title">{{ com.author }}</h5>
+          <h5 class="card-title">{{ com?.author }}</h5>
           <br />
           <br />
-          <p class="card-text">{{ com.content }}</p>
+          <p class="card-text">{{ com?.content }}</p>
         </div>
       </div>
       <form class="example-form" [formGroup]="myForm">

@@ -1,7 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
-  MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
@@ -29,7 +28,7 @@ export class FormsComponent {
     public dialogRef: MatDialogRef<FormsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Post,
     private postService: PostsService,
-    private fb: FormBuilder
+    public fb: FormBuilder
   ) {
     if (this.data) {
       this.miFormulario.setValue({
@@ -43,8 +42,6 @@ export class FormsComponent {
       });
     }
   }
-
-  ngOninit() {}
 
   campoEsValido(campo: string) {
     return (

@@ -10,8 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostsService } from './post.service';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsComponent } from './forms/forms.component';
+import { StoreModule } from '@ngrx/store';
+
 
 @NgModule({
   declarations: [
@@ -28,8 +29,7 @@ import { FormsComponent } from './forms/forms.component';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [PostsService],
   bootstrap: [AppComponent],
